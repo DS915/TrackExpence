@@ -36,46 +36,10 @@ app.use("/api/expense", expenseRouter);
 app.use("/api/dashboard", dashboardRouter);
 
 app.get('/', async (req, res) => {
-    try {
-        await mongoose.connect("mongodb+srv://shahdhruvil125_db_user:VXurOWkWLisFXnve@cluster0.v6dnksf.mongodb.net/Expence");
-
-        console.log("DB CONNECTED");
-
-        // const users = await  userModel.find();
-
-        res.status(200).json({
-           success: true,
-            message: "Database connected successfully",
-            // data: users
-        });
- 
-    } catch (error) {
-        console.log("connectDB error", error);
-
-        res.status(500).json({
-            success: false,
-            message: error.message
-        });
-    }
+    res.send("Server is running successfully" )
 });
 
-app.get('/user-list', async (req, res) => {
-      try {
-          const users = await  userModel.find();
-  
-          res.status(200).json({
-             success: true,
-              message: "fetched",
-              data: users
-          });
-      } catch (error) {
-        res.status(200).json({
-             success: false,
-              message: error.message,
-              
-          });
-      }
-})
+
 
 app.listen(port,async ()=>{
 
