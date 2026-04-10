@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import { connectDB } from './config/db.js';
-
+import mongoose from "mongoose";
 import userRouter from './routes/userRoute.js';
 import incomeRouter from './routes/incomeRoute.js';
 import expenseRouter from './routes/expenseRoute.js';
@@ -34,9 +34,26 @@ app.use("/api/income", incomeRouter);
 app.use("/api/expense", expenseRouter);
 app.use("/api/dashboard", dashboardRouter);
 
-app.get('/', (req,res)=>{
-    res.send("API WORKING");
-})
+app.get('/', async (req, res) => {
+    try {
+        await mongoose.connect("mongodb+srv://shahdhruvil125_db_user:VXurOWkWLisFXnve@cluster0.v6dnksf.mongodb.net/Expence");
+
+        console.log("DB CONNECTED");
+
+        res.status(200).json({
+            success: true,
+            message: "Database connected successfully"
+        });
+
+    } catch (error) {
+        console.log("connectDB error", error);
+
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
 
 app.listen(port,async ()=>{
 
