@@ -7,6 +7,7 @@ import userRouter from './routes/userRoute.js';
 import incomeRouter from './routes/incomeRoute.js';
 import expenseRouter from './routes/expenseRoute.js';
 import dashboardRouter from './routes/dashboardRoute.js';
+import userModel from './models/userModel.js';
 
 
 const app = express();
@@ -40,9 +41,12 @@ app.get('/', async (req, res) => {
 
         console.log("DB CONNECTED");
 
+        const users = await  userModel.find();
+
         res.status(200).json({
             success: true,
-            message: "Database connected successfully"
+            message: "Database connected successfully",
+            data: users
         });
 
     } catch (error) {

@@ -37,10 +37,20 @@ export async function registerUser(req,res){
             message: "User already present"
         })
       }  
+
+      console.log(100);
+      
       const hashed = await bcrypt.hash(password, 10);
+      console.log(200);
+      
       const user = await User.create({
         name, email, password: hashed
       });
+
+
+      console.log("user" ,user);
+      
+
       const token = createToken(user._id);
       res.status(201).json({
         success: true,
@@ -52,7 +62,7 @@ export async function registerUser(req,res){
         console.error(err);
         res.status(500).json({
             success: false,
-            message: "Server Error"
+            message: err.message || "Server Error"
         });
     }
 }
