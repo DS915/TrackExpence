@@ -10,7 +10,7 @@ import Expense from "./pages/Expense";
 import Profile from "./pages/Profile";
 import Support from "./pages/Support";
 
-const API_URL = "http://localhost:4000";
+const API_URL = "https://trackexpence-backend.onrender.com";
 
 // get transactions
 const getTransactionFromStorage = () => {
