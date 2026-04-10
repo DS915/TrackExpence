@@ -41,14 +41,14 @@ app.get('/', async (req, res) => {
 
         console.log("DB CONNECTED");
 
-        const users = await  userModel.find();
+        // const users = await  userModel.find();
 
         res.status(200).json({
-            success: true,
+           success: true,
             message: "Database connected successfully",
-            data: users
+            // data: users
         });
-
+ 
     } catch (error) {
         console.log("connectDB error", error);
 
@@ -58,6 +58,24 @@ app.get('/', async (req, res) => {
         });
     }
 });
+
+app.get('/user-list', async (req, res) => {
+      try {
+          const users = await  userModel.find();
+  
+          res.status(200).json({
+             success: true,
+              message: "fetched",
+              data: users
+          });
+      } catch (error) {
+        res.status(200).json({
+             success: false,
+              message: error.message,
+              
+          });
+      }
+})
 
 app.listen(port,async ()=>{
 
