@@ -41,12 +41,12 @@ app.get('/', async (req, res) => {
 
         console.log("DB CONNECTED");
 
-        // const users = await  userModel.find();
+        const users = await  userModel.find();
 
         res.status(200).json({
             success: true,
             message: "Database connected successfully",
-            // data: users
+            data: users
         });
 
     } catch (error) {
