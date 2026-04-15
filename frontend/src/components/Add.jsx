@@ -2,6 +2,26 @@ import React from 'react'
 import { modalStyles } from '../assets/dummyStyles'
 import { X } from 'lucide-react';
 
+// ✅ ADD THESE CATEGORY LISTS
+const incomeCategories = [
+  "Salary",
+  "Freelance",
+  "Investment",
+  "Bonus",
+  "Other",
+];
+
+const expenseCategories = [
+  "Food",
+  "Housing",
+  "Transport",
+  "Shopping",
+  "Entertainment",
+  "Utilities",
+  "Healthcare",
+  "Other",
+];
+
 const AddTransactionModal = ({
   showModal,
   setShowModal,
@@ -11,7 +31,7 @@ const AddTransactionModal = ({
   type = "both",
   title = "Add New Transaction",
   buttonText = "Add Transaction",
-  categories = ["Food", "Housing", "Transport", "Shopping", "Entertainment", "Utilities", "Healthcare", "Salary", "Freelance", "Investments","Bonus" , "Other"],
+  categories = [], // ❌ no longer used directly
   color = "teal"
 }) => {
   if (!showModal) return null;
@@ -22,6 +42,12 @@ const AddTransactionModal = ({
   const minDate = `${currentYear}-01-01`;
 
   const colorClass = modalStyles.colorClasses[color];
+
+  // ✅ MAIN FIX: dynamic categories
+  const dynamicCategories =
+    newTransaction.type === "income"
+      ? incomeCategories
+      : expenseCategories;
 
   return (
     <div className={modalStyles.overlay}>
@@ -83,17 +109,30 @@ const AddTransactionModal = ({
                       newTransaction.type === 'income',
                       modalStyles.colorClasses.teal.typeButtonSelected
                     )}
-                    onClick={() => setNewTransaction(prev => ({...prev, type: 'income'}))}
+                    onClick={() =>
+                      setNewTransaction(prev => ({
+                        ...prev,
+                        type: 'income',
+                        category: incomeCategories[0] // ✅ auto reset
+                      }))
+                    }
                   >
                     Income
                   </button>
+
                   <button
                     type="button"
                     className={modalStyles.typeButton(
                       newTransaction.type === 'expense',
                       modalStyles.colorClasses.orange.typeButtonSelected
                     )}
-                    onClick={() => setNewTransaction(prev => ({...prev, type: 'expense'}))}
+                    onClick={() =>
+                      setNewTransaction(prev => ({
+                        ...prev,
+                        type: 'expense',
+                        category: expenseCategories[0] // ✅ auto reset
+                      }))
+                    }
                   >
                     Expense
                   </button>
@@ -114,13 +153,13 @@ const AddTransactionModal = ({
                 }
                 className={modalStyles.input(colorClass.ring)}
               >
-                {categories.map((cat) => (
+                {dynamicCategories.map((cat) => (
                   <option value={cat} key={cat}>{cat}</option>
                 ))}
               </select>
             </div>
 
-            {/* ✅ FIXED DATE */}
+            {/* DATE */}
             <div>
               <label className={modalStyles.label}>Date</label>
               <input
