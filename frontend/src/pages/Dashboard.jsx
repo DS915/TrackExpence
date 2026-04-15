@@ -467,37 +467,42 @@ const Dashboard = () => {
         />
 
         <FinancialCard
-          icon={
-            <div className={dashboardStyles.piggyBankIconContainer}>
-              <PiggyBank className="w-5 h-5 text-cyan-600" />
-            </div>
-          }
-          label={`${timeFrameRange.label} Saving`}
-          value={`₹${Math.round(displaySavings).toLocaleString()}`}
-          additionalContent={
-            <div className="mt-2 text-xs text-cyan-600 items-center gap-2">
-              <div className="flex items-center gap-1">
-                <BarChart2 className="w-4 h-4" />
-                <span>
-                  {displayIncome > 0 ? Math.round((displaySavings / displayIncome) * 100) : 0}% of
-                  income
-                </span>
-              </div>
+  icon={
+    <div className={dashboardStyles.piggyBankIconContainer}>
+      <PiggyBank className="w-5 h-5 text-cyan-600" />
+    </div>
+  }
+  label={`${timeFrameRange.label} Saving`}
+  value={`₹${Math.round(displaySavings).toLocaleString()}`}
+  additionalContent={
+    <div className="mt-2 text-xs text-cyan-600 flex items-center justify-between gap-2 flex-wrap">
+      
+      {/* LEFT SIDE: % of income */}
+      <div className="flex items-center gap-1">
+        <BarChart2 className="w-4 h-4" />
+        <span>
+          {displayIncome > 0
+            ? Math.round((displaySavings / displayIncome) * 100)
+            : 0}
+          % of income
+        </span>
+      </div>
 
-              {typeof overviewMeta.savingsRate === 'number' && (
-                <span
-                  className={`px-2 py-1 rounded-full text-xs font-medium ${
-                    overviewMeta.savingsRate < 0
-                      ? trendStyles.negativeRate
-                      : trendStyles.positiveRate
-                  }`}
-                >
-                  {overviewMeta.savingsRate}%
-                </span>
-              )}
-            </div>
-          }
-        />
+      {/* RIGHT SIDE: savings rate badge */}
+      {typeof overviewMeta.savingsRate === 'number' && (
+        <span
+          className={`px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
+            overviewMeta.savingsRate < 0
+              ? trendStyles.negativeRate
+              : trendStyles.positiveRate
+          }`}
+        >
+          {overviewMeta.savingsRate}%
+        </span>
+      )}
+    </div>
+  }
+/>
       </div>
 
       {/* Gauges */}
