@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
+import React, { useState, useContext, createContext } from "react";
 import {
   Mail,
   Phone,
@@ -73,7 +73,6 @@ const SupportContent = () => {
       item.q.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Copy handler with queue
   const copyToClipboard = (text, type) => {
     navigator.clipboard.writeText(text);
 
@@ -96,28 +95,43 @@ const SupportContent = () => {
 
       {/* CONTACT */}
       <div className="grid gap-4 md:grid-cols-3 mb-8">
+
+        {/* EMAIL FIXED */}
         <div className="bg-white border rounded-xl p-4 shadow-sm hover:scale-105 transition">
-          <Mail />
-          <h3>Email</h3>
-          <div className="flex justify-between">
-            <span>support@expensetracker.com</span>
-            <Copy onClick={() => copyToClipboard("support@expensetracker.com", "email")} />
+          <Mail className="mb-2" />
+          <h3 className="font-medium mb-2">Email</h3>
+
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-sm break-all">support@expensetracker.com</span>
+
+            <Copy
+              className="w-4 h-4 cursor-pointer hover:scale-110 transition"
+              onClick={() =>
+                copyToClipboard("support@expensetracker.com", "email")
+              }
+            />
+          </div>
+        </div>
+
+        {/* PHONE FIXED */}
+        <div className="bg-white border rounded-xl p-4 shadow-sm hover:scale-105 transition">
+          <Phone className="mb-2" />
+          <h3 className="font-medium mb-2">Phone</h3>
+
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-sm">+91 99999 99999</span>
+
+            <Copy
+              className="w-4 h-4 cursor-pointer hover:scale-110 transition"
+              onClick={() => copyToClipboard("+91 99999 99999", "phone")}
+            />
           </div>
         </div>
 
         <div className="bg-white border rounded-xl p-4 shadow-sm hover:scale-105 transition">
-          <Phone />
-          <h3>Phone</h3>
-          <div className="flex justify-between">
-            <span>+91 98765 43210</span>
-            <Copy onClick={() => copyToClipboard("+91 98765 43210", "phone")} />
-          </div>
-        </div>
-
-        <div className="bg-white border rounded-xl p-4 shadow-sm hover:scale-105 transition">
-          <MapPin />
-          <h3>Address</h3>
-          <p>Ahmedabad, Gujarat</p>
+          <MapPin className="mb-2" />
+          <h3 className="font-medium mb-2">Address</h3>
+          <p className="text-sm">Ahmedabad, Gujarat</p>
         </div>
       </div>
 
@@ -179,9 +193,8 @@ const SupportContent = () => {
         )}
       </div>
 
-      
       {/* TIPS */}
-      <div className="bg-gradient-to-r from-teal-500 to-blue-500 text-white p-5 rounded-xl">
+      <div className="bg-linear-to-r from-teal-500 to-blue-500 text-white p-5 rounded-xl">
         <h3 className="mb-2 font-semibold">Quick Tips</h3>
         <ul className="text-sm space-y-1">
           <li>✔ Track expenses daily</li>
@@ -196,15 +209,14 @@ const SupportContent = () => {
           animation: slideFade 0.4s ease;
         }
         @keyframes slideFade {
-          from { opacity: 0; transform: translateY(-20px);} 
-          to { opacity: 1; transform: translateY(0);} 
+          from { opacity: 0; transform: translateY(-20px);}
+          to { opacity: 1; transform: translateY(0);}
         }
       `}</style>
     </div>
   );
 };
 
-// ================= EXPORT WRAPPED =================
 const Support = () => (
   <ToastProvider>
     <SupportContent />
