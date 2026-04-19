@@ -47,3 +47,50 @@ app.listen(port,async ()=>{
 await connectDB();
     console.log(`Server Started on http://localhost:${port}`);
 })
+
+
+
+// import express from 'express';
+// import cors from 'cors';
+// import 'dotenv/config';
+// import { connectDB } from './config/db.js';
+
+// const app = express();
+// const port = 4000;
+
+// // MIDDLEWARES
+// app.use(cors());
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+
+// const startServer = async () => {
+//   try {
+//     // ✅ FIRST connect DB
+//     await connectDB();
+
+//     // ✅ THEN import routes (VERY IMPORTANT)
+//     const userRouter = (await import('./routes/userRoute.js')).default;
+//     const incomeRouter = (await import('./routes/incomeRoute.js')).default;
+//     const expenseRouter = (await import('./routes/expenseRoute.js')).default;
+//     const dashboardRouter = (await import('./routes/dashboardRoute.js')).default;
+
+//     // ROUTES
+//     app.use("/api/user", userRouter);
+//     app.use("/api/income", incomeRouter);
+//     app.use("/api/expense", expenseRouter);
+//     app.use("/api/dashboard", dashboardRouter);
+
+//     app.get('/', (req, res) => {
+//       res.send("Server is running successfully");
+//     });
+
+//     app.listen(port, () => {
+//       console.log(`🚀 Server Started on http://localhost:${port}`);
+//     });
+
+//   } catch (error) {
+//     console.log("❌ Server start error:", error);
+//   }
+// };
+
+// startServer();
