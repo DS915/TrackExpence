@@ -388,7 +388,10 @@ export const loginStyles = {
   
   // Form elements
   label: "block text-sm font-medium text-gray-700 mb-2",
-  inputContainer: "relative",
+  // inputContainer: "relative",
+
+inputContainer: "relative flex items-center",
+
   inputIcon: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400",
   input: "w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-300 focus:border-teal-500",
   passwordInput: "w-full pl-10 pr-10 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-300 focus:border-teal-500",
@@ -476,7 +479,10 @@ export const signupStyles = {
   
   // Form elements (reusing from login with additions)
   label: "block text-sm font-medium text-gray-700 mb-2",
-  inputContainer: "relative",
+  // inputContainer: "relative",
+
+inputContainer: "relative flex items-center",
+
   inputIcon: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400",
   input: "w-full pl-10 pr-4 py-3 bg-gray-50 border rounded-xl focus:ring-2 focus:ring-teal-300 focus:border-teal-500",
   passwordInput: "w-full pl-10 pr-10 py-3 bg-gray-50 border rounded-xl focus:ring-2 focus:ring-teal-300 focus:border-teal-500",
