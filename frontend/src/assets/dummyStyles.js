@@ -311,10 +311,8 @@ export const profileStyles = {
   // Password input
   passwordLabel: "block text-sm font-medium text-gray-700 mb-1",
   passwordContainer: "relative",
-  // passwordToggle: "absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600",
+  passwordToggle: "absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600",
 
-  passwordToggle: "absolute right-3 top-1/2 -translate-y-1/2 flex items-center text-gray-400 hover:text-gray-600",
-  
   // Error text
   errorText: "mt-1 text-sm text-red-600"
 };
@@ -388,17 +386,13 @@ export const loginStyles = {
   
   // Form elements
   label: "block text-sm font-medium text-gray-700 mb-2",
-  // inputContainer: "relative",
-
-inputContainer: "relative flex items-center",
+  inputContainer: "relative",
 
   inputIcon: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400",
   input: "w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-300 focus:border-teal-500",
   passwordInput: "w-full pl-10 pr-10 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-300 focus:border-teal-500",
-  // passwordToggle: "absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600",
+  passwordToggle: "absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600",
 
-  passwordToggle: "absolute right-3 top-1/2 -translate-y-1/2 flex items-center text-gray-400 hover:text-gray-600",
-  
   // Checkbox
   checkboxContainer: "mb-6 flex items-center",
   checkbox: "w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500",
@@ -479,17 +473,13 @@ export const signupStyles = {
   
   // Form elements (reusing from login with additions)
   label: "block text-sm font-medium text-gray-700 mb-2",
-  // inputContainer: "relative",
-
-inputContainer: "relative flex items-center",
+  inputContainer: "relative",
 
   inputIcon: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400",
   input: "w-full pl-10 pr-4 py-3 bg-gray-50 border rounded-xl focus:ring-2 focus:ring-teal-300 focus:border-teal-500",
   passwordInput: "w-full pl-10 pr-10 py-3 bg-gray-50 border rounded-xl focus:ring-2 focus:ring-teal-300 focus:border-teal-500",
-  // passwordToggle: "absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600",
+  passwordToggle: "absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600",
 
-  passwordToggle: "absolute right-3 top-1/2 -translate-y-1/2 flex items-center text-gray-400 hover:text-gray-600",
-  
   // Checkbox (reusing from login)
   checkboxContainer: "mb-6 flex items-center",
   checkbox: "w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500",
